@@ -48,13 +48,15 @@ public class FacadeServer {
 
             System.out.println("Path: " + path);
 
-            if (path.startsWith("/cliente ")) {
+            if (path.startsWith("/cliente")) {
                 outputLine = "HTTP/1.1 200 OK\r\n"
                         + "Content-Type: text/html\r\n"
                         + "\r\n" + getDefaultResponse();
             }
             else if(path.startsWith("/consulta")){
-                outputLine = connectToBackEnd(path);
+                outputLine = "HTTP/1.1 200 OK\r\n"
+                        + "Content-Type: text/html\r\n"
+                        + "\r\n" + connectToBackEnd(path);
             }
             else{
                 outputLine = "HTTP/1.1 404 NOT FOUND\r\n"
